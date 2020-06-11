@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    url:  jdbc:mysql://localhost:3306/clouddb01?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: admin
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://eureka.server1.com:8083/eureka/
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    url:  jdbc:mysql://localhost:3306/clouddb02?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: admin
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://eureka.server1.com:8083/eureka/
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+
+
